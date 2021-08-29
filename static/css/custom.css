@@ -1,0 +1,83 @@
+/* 看看有沒有辦法把我整個網頁字體改成思源體*/
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+    font-family: 'Noto Sans TC';
+}
+
+/* 因為我不想要改 bootstrap.darkly.min.css 裡面的格式，所以就直接在這邊蓋過去 */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Noto Sans TC';
+}
+
+#article-page > h2:before {
+    content: '\f520';
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    margin-left:5px;
+    /*color:red;*/
+    /*content: '<i class="fas fa-crow"></i>';*/
+}
+
+article {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+    border-radius: 2px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 1px;
+    padding-bottom: 10px;
+}
+
+#article-page > pre {
+    background: #272822;
+    color: #f8f8f2;
+}
+
+/* 刪除 index 中 aboutme 圖片的框框*/
+.img-thumbnail {
+    border: 0px solid #464545;
+}
+
+/* 看有沒有辦法把文章中的圖片加點空白*/
+.entry-content img {
+    padding: 20px;
+}
+
+/* 把 index 中的格線刪除*/
+.row > .col-sm-9 > hr {
+    border-top: none;
+}
+
+/* 顯示 index 中 aboutme 的陰影*/
+div aside .well {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+}
+
+/* 表格的呈現方式 */
+table ,tbody{
+    border-width: medium;
+    border-style: solid;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+}
+
+/* tipue 搜尋欄位的字體顏色 */
+.tipue_search_content_title a {
+    color: #ffffff;
+}
+
+#tipue_search_replace, #tipue_search_error, .tipue_search_content_text {
+    color: #ffffff;
+}
+
+.tipue_search_content_bold {
+    color: #ffb300;
+}

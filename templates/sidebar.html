@@ -1,0 +1,76 @@
+<!-- sidebar.html -->
+{% load static %}
+<aside>
+    <div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="{% static "img\avatar.png" %}"/>
+        </p>
+        <p>
+            <strong>About SSJ</strong><br/>
+            一個技能點數亂點的化工人...
+        </p>
+    </div>
+
+    <!-- Sidebar -->
+    <section class="well well-sm">
+        <ul class="list-group list-group-flush">
+            <!-- Sidebar/Social -->
+            <li class="list-group-item">
+                <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://www.facebook.com/profile.php?id=100002730226702"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+                    <li class="list-group-item"><a href="https://github.com/Shen-SJ"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                </ul>
+            </li>
+            <!-- End Sidebar/Social -->
+            <!-- Sidebar/Recent Posts -->
+            <li class="list-group-item">
+                <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item"><a href="https://shen-sj.github.io/articles/2021/02/07/shi-yong-ipadlai-xie-bu-luo-ge/">使用iPad來寫部落格</a></li>
+                    <li class="list-group-item"><a href="https://shen-sj.github.io/articles/2020/09/20/ba-intel-fortran-gua-zai-aspenplus-5jian-li-chao-jian-dan-fortran-fan-ying-shi-bing-zhi-xing/">把 Intel Fortran 掛在 AspenPlus （5）建立超簡單 Fortran 反應式並執行</a></li>
+                    <li class="list-group-item"><a href="https://shen-sj.github.io/articles/2020/09/04/ba-intel-fortran-gua-zai-aspenplus-4geng-xin-setcompiler-lie-biao/">把 Intel Fortran 掛在 AspenPlus （4）更新 SetCompiler 列表</a></li>
+                    <li class="list-group-item"><a href="https://shen-sj.github.io/articles/2020/09/02/ba-intel-fortran-gua-zai-aspenplus-3an-zhuang-intel-fortran/">把 Intel Fortran 掛在 AspenPlus （3）安裝 Intel Fortran</a></li>
+                    <li class="list-group-item"><a href="https://shen-sj.github.io/articles/2020/09/01/ba-intel-fortran-gua-zai-aspenplus-2an-zhuang-visual-studio/">把 Intel Fortran 掛在 AspenPlus （2）安裝 Visual Studio</a></li>
+                </ul>
+            </li>
+            <!-- End Sidebar/Recent Posts -->
+            <!-- Sidebar/Tag Cloud -->
+            <li class="list-group-item">
+                <a href="https://shen-sj.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-0"><a href="https://shen-sj.github.io/tag/aspenplus">AspenPlus</a></li>
+                    <li class="list-group-item tag-0"><a href="https://shen-sj.github.io/tag/aspentech">AspenTech</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/blog">blog</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/cmd">CMD</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/fiddler">Fiddler</a></li>
+                    <li class="list-group-item tag-1"><a href="https://shen-sj.github.io/tag/fortran">Fortran</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/icon">icon</a></li>
+                    <li class="list-group-item tag-1"><a href="https://shen-sj.github.io/tag/intel">Intel</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/ipad">iPad</a></li>
+                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/markdown">markdown</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/pelican">Pelican</a></li>
+                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/picture">picture</a></li>
+                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/python">Python</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/softether-vpn">SoftEther VPN</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/visual-studio">Visual Studio</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/vpn">VPN</a></li>
+                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/windows">Windows</a></li>
+                </ul>
+            </li>
+            <!-- End Sidebar/Tag Cloud -->
+            <!-- Sidebar/Links -->
+            <li class="list-group-item">
+                <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+                <ul class="list-group" id="links">
+                    <li class="list-group-item"><a href="https://www.djangoproject.com/" target="_blank">Django</a></li>
+                    <li class="list-group-item"><a href="http://python.org/" target="_blank">Python.org</a></li>
+                    <li class="list-group-item"><a href="http://getbootstrap.com" target="_blank">Bootstrap</a></li>
+                    <li class="list-group-item"><a href="https://fontawesome.com/" target="_blank">FontAwesome</a></li>
+                </ul>
+            </li>
+            <!-- End Sidebar/Links -->
+        </ul>
+    </section>
+    <!-- End Sidebar -->
+</aside>
