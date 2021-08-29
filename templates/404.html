@@ -1,0 +1,23 @@
+<!-- page_no_found.html -->
+{% extends 'base.html' %}
+{% block content %}
+    <section id="content" class="body">
+        <hr size=2>
+        <div class="no-found-page-header" align="center">
+            <style>
+                .no-found-page-header > span.class-404 {
+                    font-size: 10em;
+                }
+
+                .no-found-page-header > span.class-error {
+                    font-size: 5em;
+                }
+            </style>
+            <span class="class-404">404</span>
+            <span class="class-error">error</span>
+        </div>
+        <hr size=2>
+        <h2 align="center">Page Not Found <i class="fas fa-search"></i></h2>
+        <p align="center">{{ msg|default:"很抱歉，您前往的頁面不存在，請回到首頁" }}</p>
+    </section>
+{% endblock %}

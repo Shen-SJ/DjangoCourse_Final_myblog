@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# DEBUG = False
+#
+# ALLOWED_HOSTS = ['127.0.0.1']
+
 
 # Application definition
 
@@ -165,6 +169,3 @@ CKEDITOR_CONFIGS = {
         'codeSnippet_theme': 'monokai',
     },
 }
-
-
-# [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]]

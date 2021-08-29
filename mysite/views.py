@@ -93,5 +93,6 @@ def article_page(request, slug):
             'body': article.body
         }
     except:
-        pass    # 應該要顯示文章不存在的畫面
+        msg = '很抱歉，您所選取的文章不存在，請回到首頁'
+        return render(request, '404.html', locals())
     return render(request, 'article.html', locals())
