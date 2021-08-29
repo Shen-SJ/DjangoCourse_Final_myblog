@@ -37,23 +37,9 @@
             <li class="list-group-item">
                 <a href="https://shen-sj.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group list-inline tagcloud" id="tags">
-                    <li class="list-group-item tag-0"><a href="https://shen-sj.github.io/tag/aspenplus">AspenPlus</a></li>
-                    <li class="list-group-item tag-0"><a href="https://shen-sj.github.io/tag/aspentech">AspenTech</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/blog">blog</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/cmd">CMD</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/fiddler">Fiddler</a></li>
-                    <li class="list-group-item tag-1"><a href="https://shen-sj.github.io/tag/fortran">Fortran</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/icon">icon</a></li>
-                    <li class="list-group-item tag-1"><a href="https://shen-sj.github.io/tag/intel">Intel</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/ipad">iPad</a></li>
-                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/markdown">markdown</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/pelican">Pelican</a></li>
-                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/picture">picture</a></li>
-                    <li class="list-group-item tag-2"><a href="https://shen-sj.github.io/tag/python">Python</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/softether-vpn">SoftEther VPN</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/visual-studio">Visual Studio</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/vpn">VPN</a></li>
-                    <li class="list-group-item tag-4"><a href="https://shen-sj.github.io/tag/windows">Windows</a></li>
+                    {% for tag_name, tag_class in tags_classified.items %}
+                        <li class="list-group-item tag-{{ tag_class }}"><a href="/">{{ tag_name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
             <!-- End Sidebar/Tag Cloud -->
