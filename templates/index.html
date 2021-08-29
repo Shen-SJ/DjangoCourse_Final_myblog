@@ -15,9 +15,9 @@
                     <span class="label label-default">Tags</span>
                     {% for tag in article.tags %}
                         {% if forloop.last %}
-                            <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
+                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
                         {% else %}
-                            <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
+                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
                             /
                         {% endif %}
                     {% endfor %}
@@ -30,5 +30,4 @@
         </article>
         <hr/>
     {% endfor %}
-{#    {% include "article_list.html" %}#}
 {% endblock %}

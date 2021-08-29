@@ -35,10 +35,10 @@
             <!-- End Sidebar/Recent Posts -->
             <!-- Sidebar/Tag Cloud -->
             <li class="list-group-item">
-                <a href="https://shen-sj.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4>
                 <ul class="list-group list-inline tagcloud" id="tags">
                     {% for tag_name, tag_class in tags_classified.items %}
-                        <li class="list-group-item tag-{{ tag_class }}"><a href="/">{{ tag_name }}</a></li>
+                        <li class="list-group-item tag-{{ tag_class }}"><a href="{% url 'tag-url' tag_name %}">{{ tag_name }}</a></li>
                     {% endfor %}
                 </ul>
             </li>

@@ -96,3 +96,25 @@ def article_page(request, slug):
         msg = '很抱歉，您所選取的文章不存在，請回到首頁'
         return render(request, '404.html', locals())
     return render(request, 'article.html', locals())
+
+
+def tag_article_list_page(request, tag_name):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+    try:
+        target_tag = models.Tags.objects.get(name=tag_name)
+    except:
+        msg = '很抱歉，您找尋的標籤不存在，請回到首頁'
+        render(request, '404.html', locals())
+    target_tag_articles = models.Articles.objects.filter(tags=target_tag)
+    target_tag_articles = [
+        {'title': ar.title,
+         'abstract': ar.abstract,
+         'slug': ar.slug,
+         'isotime': timezone.make_naive(ar.pub_date).isoformat(),
+         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+         'tags': ar.tags.all(),
+         } for ar in target_tag_articles
+    ]
+    return render(request, 'tag_article_list.html', locals())
