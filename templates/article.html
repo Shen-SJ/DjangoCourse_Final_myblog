@@ -11,7 +11,7 @@
     <!-- article information -->
         <header class="page-header">
             <h1>
-                <a href="https://shen-sj.github.io/articles/2021/02/07/shi-yong-ipadlai-xie-bu-luo-ge/" rel="bookmark"
+                <a href="{% url 'article-url' article.slug %}" rel="bookmark"
                    title="Permalink to {{ article.title }}">
                     {{ article.title }}
                 </a>
@@ -30,9 +30,9 @@
                         <span class="label label-default">Tags</span>
                         {% for tag in article.tags %}
                             {% if forloop.last %}
-                                <a href="/">{{ tag.name }}</a>
+                                <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
                             {% else %}
-                                <a href="/">{{ tag.name }}</a>
+                                <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
                                 /
                             {% endif %}
                         {% endfor %}

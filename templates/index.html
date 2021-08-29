@@ -3,7 +3,7 @@
 {% block content %}
     {% for article in articles %}
         <article>
-            <h2><a href="/article/{{ article.slug }}">{{ article.title }}</a></h2>
+            <h2><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h2>
             <div class="well well-sm">
                 <footer class="post-info">
                     <span class="label label-default">Date</span>
@@ -15,9 +15,9 @@
                     <span class="label label-default">Tags</span>
                     {% for tag in article.tags %}
                         {% if forloop.last %}
-                            <a href="/">{{ tag.name }}</a>
+                            <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
                         {% else %}
-                            <a href="/">{{ tag.name }}</a>
+                            <a href="/">{{ tag.name }}</a>  {# 需添加 tag url #}
                             /
                         {% endif %}
                     {% endfor %}
@@ -25,10 +25,9 @@
             </div>
             <div class="summary">
                 <p>{{ article.abstract }}</p>
-                <a class="btn btn-default btn-xs" href="/article/{{ article.slug }}">more ...</a>
+                <a class="btn btn-default btn-xs" href="{% url 'article-url' article.slug %}">more ...</a>
             </div>
         </article>
-
         <hr/>
     {% endfor %}
 {#    {% include "article_list.html" %}#}

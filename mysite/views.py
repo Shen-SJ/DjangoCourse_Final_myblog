@@ -50,7 +50,7 @@ def tags_cloud():
 
 
 def index(request):
-    # show the recent posts in sidebar
+    # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
 
@@ -68,8 +68,15 @@ def index(request):
     return render(request, 'index.html', locals())
 
 
+def aboutme(request):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+    return render(request, 'aboutme.html', locals())
+
+
 def article_page(request, slug):
-    # show the recent posts in sidebar
+    # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
     try:
