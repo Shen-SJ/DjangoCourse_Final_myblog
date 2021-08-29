@@ -5,7 +5,16 @@ from mysite import models
 
 
 # Create your views here.
+def recent_posts(number=5):
+    recent_articles = models.Articles.objects.filter(visible=True).order_by('-pub_date')[0:number]
+    return recent_articles
+
+
 def index(request):
+    # show the recent posts in sidebar
+    recent_articles = recent_posts()
+
+    # list all of the articles in the body
     articles = models.Articles.objects.filter(visible=True).order_by('-pub_date')
     articles = [
         {'title': ar.title,
@@ -20,6 +29,8 @@ def index(request):
 
 
 def article_page(request, slug):
+    # show the recent posts in sidebar
+    recent_articles = recent_posts()
     try:
         article = models.Articles.objects.get(slug=slug)
         article = {
