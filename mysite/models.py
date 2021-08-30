@@ -15,7 +15,7 @@ class Tags(models.Model):
 
 
 class Series(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(unique=True, max_length=200)
 
 
 class Articles(models.Model):

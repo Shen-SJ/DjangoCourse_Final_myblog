@@ -26,22 +26,22 @@ def tags_cloud():
         if most_freq == len(models.Articles.objects.filter(tags=tag)):
             tag_class = 0
         elif (most_freq > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= most_freq-interval):
+                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval):
             tag_class = 1
-        elif (most_freq-interval > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= most_freq-interval*2):
+        elif (most_freq - interval > len(models.Articles.objects.filter(tags=tag))) and \
+                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 2):
             tag_class = 2
-        elif (most_freq-interval*2 > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= most_freq-interval*3):
+        elif (most_freq - interval * 2 > len(models.Articles.objects.filter(tags=tag))) and \
+                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 3):
             tag_class = 3
-        elif (most_freq-interval*3 > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= most_freq-interval*4):
+        elif (most_freq - interval * 3 > len(models.Articles.objects.filter(tags=tag))) and \
+                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 4):
             tag_class = 4
-        elif (most_freq-interval*4 > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= most_freq-interval*5):
+        elif (most_freq - interval * 4 > len(models.Articles.objects.filter(tags=tag))) and \
+                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 5):
             tag_class = 5
-        elif (most_freq-interval*5 > len(models.Articles.objects.filter(tags=tag))) and \
-             (len(models.Articles.objects.filter(tags=tag)) >= 1):
+        elif (most_freq - interval * 5 > len(models.Articles.objects.filter(tags=tag))) and \
+                (len(models.Articles.objects.filter(tags=tag)) >= 1):
             tag_class = 6
         elif len(models.Articles.objects.filter(tags=tag)) == 0:
             continue
@@ -53,6 +53,30 @@ def index(request):
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # search action
+    item_name = request.GET.get('search_item')
+    if item_name:
+        title = 'Search'
+        q1 = models.Articles.objects.filter(visible=True).filter(title__icontains=item_name)
+        q2 = models.Articles.objects.filter(visible=True).filter(abstract__icontains=item_name)
+        q3 = models.Articles.objects.filter(visible=True).filter(slug__icontains=item_name)
+        q4 = models.Articles.objects.filter(visible=True).filter(body__icontains=item_name)
+        q5_tag = models.Tags.objects.filter(name__icontains=item_name).values_list('id', flat=True)
+        q5 = models.Articles.objects.filter(visible=True).filter(tags__in=q5_tag)
+        q6_series = models.Series.objects.filter(name__icontains=item_name).values_list('id', flat=True)
+        q6 = models.Articles.objects.filter(visible=True).filter(series__in=q6_series)
+        articles = (q1 | q2 | q3 | q4 | q5 | q6).distinct()
+        articles = [
+            {'title': ar.title,
+             'abstract': ar.abstract,
+             'slug': ar.slug,
+             'isotime': timezone.make_naive(ar.pub_date).isoformat(),
+             'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+             'tags': ar.tags.all(),
+             } for ar in articles
+        ]
+        return render(request, 'query_page.html', locals())
 
     # list all of the articles in the body
     articles = models.Articles.objects.filter(visible=True).order_by('-pub_date')
@@ -104,17 +128,19 @@ def tag_article_list_page(request, tag_name):
     tags_classified = tags_cloud()
     try:
         target_tag = models.Tags.objects.get(name=tag_name)
+        item_name = tag_name
+        title = 'Tag'
     except:
         msg = '很抱歉，您找尋的標籤不存在，請回到首頁'
         render(request, '404.html', locals())
-    target_tag_articles = models.Articles.objects.filter(tags=target_tag)
-    target_tag_articles = [
+    articles = models.Articles.objects.filter(tags=target_tag)
+    articles = [
         {'title': ar.title,
          'abstract': ar.abstract,
          'slug': ar.slug,
          'isotime': timezone.make_naive(ar.pub_date).isoformat(),
          'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
          'tags': ar.tags.all(),
-         } for ar in target_tag_articles
+         } for ar in articles
     ]
-    return render(request, 'tag_article_list.html', locals())
+    return render(request, 'query_page.html', locals())

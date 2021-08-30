@@ -22,5 +22,5 @@ urlpatterns = [
     path('', views.index),
     path('article/<slug:slug>', views.article_page, name='article-url'),
     path('about/', views.aboutme),
-    path('tags/<str:tag_name>', views.tag_article_list_page, name='tag-url')
+    path('tags/<str:tag_name>', views.tag_article_list_page, name='tag-url'),
 ]
