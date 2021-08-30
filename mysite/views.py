@@ -126,13 +126,14 @@ def tag_article_list_page(request, tag_name):
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+    target_tag = None
     try:
         target_tag = models.Tags.objects.get(name=tag_name)
         item_name = tag_name
         title = 'Tag'
     except:
         msg = '很抱歉，您找尋的標籤不存在，請回到首頁'
-        render(request, '404.html', locals())
+        return render(request, '404.html', locals())
     articles = models.Articles.objects.filter(tags=target_tag)
     articles = [
         {'title': ar.title,
