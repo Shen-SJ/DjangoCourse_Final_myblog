@@ -44,6 +44,11 @@ article {
     padding: 20px;
 }
 
+#article-page img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* 把 index 中的格線刪除*/
 .row > .col-sm-9 > hr {
     border-top: none;
