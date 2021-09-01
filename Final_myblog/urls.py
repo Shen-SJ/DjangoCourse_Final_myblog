@@ -24,6 +24,7 @@ urlpatterns = [
     path('about/', views.aboutme),
     path('tags/<str:tag_name>', views.tag_article_list_page, name='tag-url'),
     path('tags/', views.tag_list_page),
+    path('series/<str:series_name>', views.series_article_list_page, name='series-url'),
     path('series/', views.series_list_page),
     path('contact/', views.contact_page),
     path('captcha/', include('captcha.urls'))

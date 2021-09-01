@@ -128,6 +128,7 @@ def tag_article_list_page(request, tag_name):
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
     target_tag = None
     try:
         target_tag = models.Tags.objects.get(name=tag_name)
@@ -136,7 +137,33 @@ def tag_article_list_page(request, tag_name):
     except:
         msg = '很抱歉，您找尋的標籤不存在，請回到首頁'
         return render(request, '404.html', locals())
-    articles = models.Articles.objects.filter(tags=target_tag)
+    articles = models.Articles.objects.filter(visible=True).filter(tags=target_tag)
+    articles = [
+        {'title': ar.title,
+         'abstract': ar.abstract,
+         'slug': ar.slug,
+         'isotime': timezone.make_naive(ar.pub_date).isoformat(),
+         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %b"),
+         'tags': ar.tags.all(),
+         } for ar in articles
+    ]
+    return render(request, 'query_page.html', locals())
+
+
+def series_article_list_page(request, series_name):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+
+    target_series = None
+    try:
+        target_series = models.Series.objects.get(name=series_name)
+        item_name = series_name
+        title = 'Series'
+    except:
+        msg = '很抱歉，您找尋的系列不存在，請回到首頁'
+        return render(request, '404.html', locals())
+    articles = models.Articles.objects.filter(visible=True).filter(series=target_series)
     articles = [
         {'title': ar.title,
          'abstract': ar.abstract,
@@ -158,7 +185,7 @@ def tag_list_page(request):
     title = "Tags"
     items_table = OrderedDict()
     for tag in models.Tags.objects.all().order_by('name'):
-        items_table[tag.name] = len(models.Articles.objects.filter(tags=tag))
+        items_table[tag.name] = len(models.Articles.objects.filter(visible=True).filter(tags=tag))
     return render(request, 'tags_series_list.html', locals())
 
 
@@ -171,7 +198,7 @@ def series_list_page(request):
     title = "Series"
     items_table = OrderedDict()
     for series in models.Series.objects.all().order_by('name'):
-        items_table[series.name] = len(models.Articles.objects.filter(seires=series))
+        items_table[series.name] = len(models.Articles.objects.filter(visible=True).filter(series=series))
     return render(request, 'tags_series_list.html', locals())
 
 

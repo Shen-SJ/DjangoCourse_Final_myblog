@@ -11,8 +11,13 @@
         </div>
         <div class="panel-body">
             {% for item_name, item_number in items_table.items %}
-                <h3><a href="{% url "tag-url" item_name %}">{{ item_name }}</a></h3>
-                {{ item_number }} 篇
+                {% if title == "Tags" %}
+                    <h3><a href="{% url "tag-url" item_name %}">{{ item_name }}</a></h3>
+                    {{ item_number }} 篇
+                {% elif title == "Series" %}
+                    <h3><a href="{% url "series-url" item_name %}">{{ item_name }}</a></h3>
+                    {{ item_number }} 篇
+                {% endif %}
             {% empty %}
                 <h2>抱歉，目前沒有任何{{ title }}</h2>
             {% endfor %}
