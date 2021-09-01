@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import json
+
+# load the mailgun data from file
+with open('key_data.json') as f:
+    key_data = json.load(f)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mysite',
     'ckeditor',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +173,12 @@ CKEDITOR_CONFIGS = {
         'codeSnippet_theme': 'monokai',
     },
 }
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": f"{key_data['MAILGUN_API_KEY']}",
+    "MAILGUN_SENDER_DOMAIN": f"{key_data['MAILGUN_SENDER_DOMAIN']}",
+}
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = "you@example.com"
+SERVER_EMAIL = "your-server@example.com"

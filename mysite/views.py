@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
-from mysite import models
+from mysite import models, forms
 from collections import OrderedDict
+from django.forms.utils import ErrorList
 
 
 # Create your views here.
@@ -72,7 +74,7 @@ def index(request):
              'abstract': ar.abstract,
              'slug': ar.slug,
              'isotime': timezone.make_naive(ar.pub_date).isoformat(),
-             'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+             'time': timezone.make_naive(ar.pub_date).strftime("%a %d %b"),
              'tags': ar.tags.all(),
              } for ar in articles
         ]
@@ -85,7 +87,7 @@ def index(request):
          'abstract': ar.abstract,
          'slug': ar.slug,
          'isotime': timezone.make_naive(ar.pub_date).isoformat(),
-         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %b"),
          'tags': ar.tags.all(),
          } for ar in articles
     ]
@@ -110,7 +112,7 @@ def article_page(request, slug):
             'abstract': article.abstract,
             'slug': article.slug,
             'isotime': timezone.make_naive(article.pub_date).isoformat(),
-            'time': timezone.make_naive(article.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+            'time': timezone.make_naive(article.pub_date).strftime("%a %d %b"),
             'tags': article.tags.all(),
             'visible': article.visible,
             'series': article.series,
@@ -140,8 +142,78 @@ def tag_article_list_page(request, tag_name):
          'abstract': ar.abstract,
          'slug': ar.slug,
          'isotime': timezone.make_naive(ar.pub_date).isoformat(),
-         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %m月 %YT%H:%M:%S"),
+         'time': timezone.make_naive(ar.pub_date).strftime("%a %d %b"),
          'tags': ar.tags.all(),
          } for ar in articles
     ]
     return render(request, 'query_page.html', locals())
+
+
+def tag_list_page(request):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+
+    # Count articles number for each tag
+    title = "Tags"
+    items_table = OrderedDict()
+    for tag in models.Tags.objects.all().order_by('name'):
+        items_table[tag.name] = len(models.Articles.objects.filter(tags=tag))
+    return render(request, 'tags_series_list.html', locals())
+
+
+def series_list_page(request):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+
+    # Count articles number for each series
+    title = "Series"
+    items_table = OrderedDict()
+    for series in models.Series.objects.all().order_by('name'):
+        items_table[series.name] = len(models.Articles.objects.filter(seires=series))
+    return render(request, 'tags_series_list.html', locals())
+
+
+class DivErrorList(ErrorList):
+    def __str__(self):
+        return self.as_ps()
+
+    def as_ps(self):
+        if not self:
+            return ''
+        return ''.join(['<p class="errorlist text-danger">%s</p>' % e for e in self])
+
+
+def contact_page(request):
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+
+    if request.method == 'POST':
+        form = forms.ContactForm(request.POST, error_class=DivErrorList)
+        if form.is_valid():
+            message = '感謝您的來信！'
+            user_name = form.cleaned_data['user_name']
+            user_email = form.cleaned_data['user_email']
+            user_message = form.cleaned_data['user_message']
+
+            mail_body = u'''
+            網友姓名：{}
+            反應意見：如下
+            {}'''.format(user_name, user_message)
+            email = EmailMultiAlternatives(
+                subject="來自【SSJ's Blog】網站的網友意見",
+                body=mail_body,
+                from_email=user_email,
+                to=[' johnson840205@gmail.com '],    # 管理員(你自己)的email
+                reply_to=["Helpdesk <support@example.com>"]
+            )
+            email.send()
+            form = forms.ContactForm()
+        else:
+            message = '請檢查您輸入的資訊是否正確！'
+    else:
+        form = forms.ContactForm()
+
+    return render(request, 'contact.html', locals())

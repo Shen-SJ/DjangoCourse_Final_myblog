@@ -44,6 +44,7 @@ article {
     padding: 20px;
 }
 
+/* 將文章中的圖片大小調成自動調整 */
 #article-page img {
     max-width: 100%;
     height: auto;
@@ -51,6 +52,11 @@ article {
 
 /* 把 index 中的格線刪除*/
 .row > .col-sm-9 > hr {
+    border-top: none;
+}
+
+/*首頁文章列表的 hr 把它隱形*/
+.row > .col-sm-8 > hr {
     border-top: none;
 }
 
@@ -69,6 +75,19 @@ table ,tbody{
     margin-bottom: 20px;
 }
 
+table#contact-table {
+    border-width: medium;
+    border-style: hidden;
+    margin-right: unset;
+    margin-left: unset;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table#contact-table  th, table#contact-table td {
+    text-align: left;
+}
+
 td, th {
     padding: 10px;
     text-align: center;
@@ -79,10 +98,7 @@ td, th {
     color: #ffffff;
 }
 
-#tipue_search_replace, #tipue_search_error, .tipue_search_content_text {
-    color: #ffffff;
-}
-
-.tipue_search_content_bold {
-    color: #ffb300;
+/*nav 右邊的 search input 大小*/
+input#search-input {
+    width: 190px;
 }

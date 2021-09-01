@@ -3,3 +3,6 @@ __pycache__
 
 # pycharm file
 .idea
+
+# sensitive data
+key_data.json
