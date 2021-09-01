@@ -16,11 +16,11 @@ class ContactForm(forms.Form):
         self.fields['user_message'].label = '您的意見'
         self.fields['captcha'].label = '確定你不是機器人'
 
-        # for field in iter(self.fields):
-        #     if field == 'user_school':
-        #         continue
-        #     self.fields[field].widget.attrs.update(
-        #         {
-        #             'class': 'form-control'
-        #         }
-        #     )
+        for field in iter(self.fields):
+            if field == 'user_name':
+                self.fields[field].widget.attrs.update({'placeholder': 'Your name'})
+            if field == 'user_email':
+                self.fields[field].widget.attrs.update({'placeholder': 'Your email'})
+            if field == 'user_message':
+                self.fields[field].widget.attrs.update({'placeholder': 'Your opinion'})
+            self.fields[field].widget.attrs.update({'class': 'form-control'})
