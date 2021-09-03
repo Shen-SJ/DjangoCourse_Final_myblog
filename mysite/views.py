@@ -9,6 +9,7 @@ from django.forms.utils import ErrorList
 
 # Create your views here.
 def recent_posts(number=5):
+    """Show the 5 post of recent posts in the sidebar"""
     recent_articles = models.Articles.objects.filter(visible=True).order_by('-pub_date')[0:number]
     return recent_articles
 
@@ -52,6 +53,7 @@ def tags_cloud():
 
 
 def index(request):
+    """index page of web. show all of the articles."""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -118,6 +120,10 @@ def article_page(request, slug):
             'series': article.series,
             'body': article.body
         }
+        if article['series']:
+            target_series = models.Series.objects.get(name=article['series'])
+            articles_series = models.Articles.objects.filter(series=target_series).order_by('title')
+            article_now = models.Articles.objects.get(slug=slug)
     except:
         msg = '很抱歉，您所選取的文章不存在，請回到首頁'
         return render(request, '404.html', locals())
@@ -137,7 +143,7 @@ def tag_article_list_page(request, tag_name):
     except:
         msg = '很抱歉，您找尋的標籤不存在，請回到首頁'
         return render(request, '404.html', locals())
-    articles = models.Articles.objects.filter(visible=True).filter(tags=target_tag)
+    articles = models.Articles.objects.filter(visible=True).filter(tags=target_tag).order_by('-pub_date')
     articles = [
         {'title': ar.title,
          'abstract': ar.abstract,
@@ -163,7 +169,7 @@ def series_article_list_page(request, series_name):
     except:
         msg = '很抱歉，您找尋的系列不存在，請回到首頁'
         return render(request, '404.html', locals())
-    articles = models.Articles.objects.filter(visible=True).filter(series=target_series)
+    articles = models.Articles.objects.filter(visible=True).filter(series=target_series).order_by('-pub_date')
     articles = [
         {'title': ar.title,
          'abstract': ar.abstract,
