@@ -15,6 +15,7 @@ def recent_posts(number=5):
 
 
 def tags_cloud():
+    """Show the tags cloud in the sidebar"""
     # determine all tags frequency
     tag_freq = {}
     for tag in models.Tags.objects.all():
@@ -97,6 +98,7 @@ def index(request):
 
 
 def aboutme(request):
+    """Show my information in the about page"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -104,6 +106,7 @@ def aboutme(request):
 
 
 def article_page(request, slug):
+    """Show the article on page in each article"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -122,7 +125,7 @@ def article_page(request, slug):
         }
         if article['series']:
             target_series = models.Series.objects.get(name=article['series'])
-            articles_series = models.Articles.objects.filter(series=target_series).order_by('title')
+            articles_series = models.Articles.objects.filter(visible=True).filter(series=target_series).order_by('title')
             article_now = models.Articles.objects.get(slug=slug)
     except:
         msg = '很抱歉，您所選取的文章不存在，請回到首頁'
@@ -131,6 +134,7 @@ def article_page(request, slug):
 
 
 def tag_article_list_page(request, tag_name):
+    """List the articles in specific tag"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -157,6 +161,7 @@ def tag_article_list_page(request, tag_name):
 
 
 def series_article_list_page(request, series_name):
+    """List the articles in specific Series"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -183,6 +188,7 @@ def series_article_list_page(request, series_name):
 
 
 def tag_list_page(request):
+    """List the tags in this blog"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -196,6 +202,7 @@ def tag_list_page(request):
 
 
 def series_list_page(request):
+    """List the series in this blog"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
@@ -209,6 +216,7 @@ def series_list_page(request):
 
 
 class DivErrorList(ErrorList):
+    """Defined how to show the error message on form (especially contact form)"""
     def __str__(self):
         return self.as_ps()
 
@@ -219,6 +227,7 @@ class DivErrorList(ErrorList):
 
 
 def contact_page(request):
+    """Show the Contact page to the reader and let them send the email to me by mailgun"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
