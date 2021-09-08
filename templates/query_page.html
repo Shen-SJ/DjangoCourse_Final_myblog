@@ -38,6 +38,8 @@
                 </div>
             </article>
             <hr/>
+        {% empty %}
+                <h2>找不到{{ item_name }}相關的文章...</h2>
         {% endfor %}
         </div>
     </div>
