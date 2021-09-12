@@ -259,3 +259,11 @@ def contact_page(request):
         form = forms.ContactForm()
 
     return render(request, 'contact.html', locals())
+
+
+def page_not_found_page(request, exception):
+    """Behavior of 404 page"""
+    # show the recent posts and tags cloud in sidebar
+    recent_articles = recent_posts()
+    tags_classified = tags_cloud()
+    return render(request, '404.html', status=404)

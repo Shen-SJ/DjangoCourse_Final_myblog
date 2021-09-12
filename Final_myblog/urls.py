@@ -29,3 +29,5 @@ urlpatterns = [
     path('contact/', views.contact_page),
     path('captcha/', include('captcha.urls'))
 ]
+
+handler404 = "mysite.views.page_not_found_page"
