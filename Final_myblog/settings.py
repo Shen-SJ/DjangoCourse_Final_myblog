@@ -171,6 +171,7 @@ CKEDITOR_CONFIGS = {
         ],
         'extraPlugins': 'codesnippet',
         'codeSnippet_theme': 'monokai',
+        'width': '100%',
     },
 }
 
