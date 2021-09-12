@@ -266,4 +266,4 @@ def page_not_found_page(request, exception):
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
-    return render(request, '404.html', status=404)
+    return render(request, '404.html', locals(), status=404)
