@@ -9,37 +9,31 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <article id="article-page">
     <!-- article information -->
-        <header class="page-header">
-            <h1>
-                <a href="{% url 'article-url' article.slug %}" rel="bookmark"
-                   title="Permalink to {{ article.title }}">
-                    {{ article.title }}
-                </a>
-            </h1>
-        </header>
-        <div class="entry-content">
-            <div class="panel">
-                <div class="panel-body">
-                    <footer class="post-info">
+        <h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
+        <ol class="breadcrumb">
+            <footer class="post-info">
+                    <span class="badge rounded-pill bg-secondary">
+                        <i class="far fa-calendar-alt"></i>
                         <span class="label label-default">Date</span>
-                        <span class="published">
-                            <i class="fa fa-calendar"></i>
-                            {% load tz %}
-                            <time datetime="{{ article.isotime }}">{{ article.time }}</time>
-                        </span>
+                    </span>
+                    <span class="published">
+                        {% load tz %}
+                        <time datetime="{{ article.isotime }}">{{ article.time }}</time>
+                    </span>
+                    <span class="badge rounded-pill bg-secondary">
+                        <i class="fas fa-tags"></i>
                         <span class="label label-default">Tags</span>
-                        {% for tag in article.tags %}
-                            {% if forloop.last %}
-                                <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                            {% else %}
-                                <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                                /
-                            {% endif %}
-                        {% endfor %}
-                    </footer>
-                </div>
-            </div>
-        </div>
+                    </span>
+                    {% for tag in article.tags %}
+                        {% if forloop.last %}
+                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
+                        {% else %}
+                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
+                            /
+                        {% endif %}
+                    {% endfor %}
+                </footer>
+        </ol>
 
         <!-- article body -->
         {{ article.body|safe }}
@@ -64,6 +58,5 @@
                 textColor: '#fff'
             });
         </script>
-
     </article>
 {% endblock %}

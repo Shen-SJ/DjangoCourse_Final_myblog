@@ -2,21 +2,21 @@
 {% extends 'base.html' %}
 {% block title %} - {{ title }} Lists{% endblock %}
 {% block content %}
-    <div class="panel panel-default">
+    <div class="card border-dark mb-3">
         <style>
-            div.panel-default {box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px}
+            div.card.border-dark.mb-3 {box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px}
         </style>
-        <div class="panel-heading">
-            <h1 class="entry-title">{{ title }} Lists</h1>
+        <div class="card-header">
+            <h2>{{ title }} Lists</h2>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
             {% for item_name, item_number in items_table.items %}
                 {% if title == "Tags" %}
-                    <h3><a href="{% url "tag-url" item_name %}">{{ item_name }}</a></h3>
-                    {{ item_number }} 篇
+                    <h3 class="card-title"><a href="{% url "tag-url" item_name %}">{{ item_name }}</a></h3>
+                    <p class="card-text">{{ item_number }} 篇</p>
                 {% elif title == "Series" %}
-                    <h3><a href="{% url "series-url" item_name %}">{{ item_name }}</a></h3>
-                    {{ item_number }} 篇
+                    <h3 class="card-title"><a href="{% url "series-url" item_name %}">{{ item_name }}</a></h3>
+                    <p class="card-text">{{ item_number }} 篇</p>
                 {% endif %}
             {% empty %}
                 <h2>抱歉，目前沒有任何{{ title }}</h2>

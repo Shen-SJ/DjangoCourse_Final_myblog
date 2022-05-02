@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mysite',
     'ckeditor',
     'captcha',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

@@ -17,40 +17,14 @@ def recent_posts(number=5):
 def tags_cloud():
     """Show the tags cloud in the sidebar"""
     # determine all tags frequency
-    tag_freq = {}
+    tags_freq = OrderedDict()
     for tag in models.Tags.objects.all():
-        tag_freq[tag.name] = len(models.Articles.objects.filter(tags=tag))
-    most_freq = max(tag_freq.values())
-    interval = (most_freq - 1) / 6
+        tags_freq[tag.name] = len(models.Articles.objects.filter(tags=tag))
+    sorted_dict = sorted(tags_freq.items(), key=lambda x: x[1], reverse=True)
+    tags_freq.clear()
+    tags_freq.update(sorted_dict)
 
-    # classified depends on the tag frequency
-    tags_class = OrderedDict()
-    for tag in models.Tags.objects.all().order_by('name'):
-        tag_class = None
-        if most_freq == len(models.Articles.objects.filter(tags=tag)):
-            tag_class = 0
-        elif (most_freq > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval):
-            tag_class = 1
-        elif (most_freq - interval > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 2):
-            tag_class = 2
-        elif (most_freq - interval * 2 > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 3):
-            tag_class = 3
-        elif (most_freq - interval * 3 > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 4):
-            tag_class = 4
-        elif (most_freq - interval * 4 > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= most_freq - interval * 5):
-            tag_class = 5
-        elif (most_freq - interval * 5 > len(models.Articles.objects.filter(tags=tag))) and \
-                (len(models.Articles.objects.filter(tags=tag)) >= 1):
-            tag_class = 6
-        elif len(models.Articles.objects.filter(tags=tag)) == 0:
-            continue
-        tags_class[tag.name] = tag_class
-    return tags_class
+    return tags_freq
 
 
 def index(request):
@@ -233,7 +207,9 @@ def contact_page(request):
     tags_classified = tags_cloud()
 
     if request.method == 'POST':
-        form = forms.ContactForm(request.POST, error_class=DivErrorList)
+        form = forms.ContactForm(request.POST,
+                                 # error_class=DivErrorList
+                                 )
         if form.is_valid():
             message = '感謝您的來信！'
             user_name = form.cleaned_data['user_name']
@@ -251,10 +227,12 @@ def contact_page(request):
                 to=[' johnson840205@gmail.com '],    # 管理員(你自己)的email
                 reply_to=["Helpdesk <support@example.com>"]
             )
-            email.send()
+            # email.send()
             form = forms.ContactForm()
         else:
             message = '請檢查您輸入的資訊是否正確！'
+            for item_name, item_value in form._errors.items():
+                print(item_name, item_value)
     else:
         form = forms.ContactForm()
 

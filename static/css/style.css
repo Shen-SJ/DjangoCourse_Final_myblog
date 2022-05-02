@@ -55,6 +55,7 @@ body {
     padding-bottom: 5px;
     -ms-word-break: normal;
     word-break: normal;
+    text-align: center;
 }
 
 #sidebar {

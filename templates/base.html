@@ -13,12 +13,10 @@
     <link href="{% static "img/logo.png" %}" rel="icon">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static "css/bootstrap.darkly.min.css" %}" type="text/css"/>
-    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css"/>
     <link href="{% static "css/pygments/monokai.css" %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css"/>
     <link href="{% static "css/custom.css" %}" rel="stylesheet">
-    <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -34,17 +32,14 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBZVBJV"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    {% include "navbar.html" %}
-</div> <!-- /.navbar -->
-
-<div class="container">
+{% include "navbar.html" %}
+<div class="container pt-4">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-lg-9 pt-4">
             {% block content %}{% endblock %}
         </div>
-        <div class="col-sm-3" id="sidebar">
+        <div class="col-lg-3 pt-4" id="sidebar">
             {% include "sidebar.html" %}
         </div>
     </div>
@@ -53,9 +48,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer>
 {% include 'footer.html' %}
 </footer>
-<script src="{% static "js/jquery.min.js" %}"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/bootstrap.bundle.js" %}"></script>
 </body>
 </html>

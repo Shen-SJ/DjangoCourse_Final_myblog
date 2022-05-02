@@ -23,4 +23,3 @@ class ContactForm(forms.Form):
                 self.fields[field].widget.attrs.update({'placeholder': 'Your email'})
             if field == 'user_message':
                 self.fields[field].widget.attrs.update({'placeholder': 'Your opinion'})
-            self.fields[field].widget.attrs.update({'class': 'form-control'})
