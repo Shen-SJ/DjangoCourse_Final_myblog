@@ -1,19 +1,14 @@
 <!-- sidebar.html -->
 {% load static %}
 <aside>
-    <div id="aboutme">
-        <p>
-            <img width="100%" class="img-thumbnail" src="{% static "img\avatar.png" %}"/>
-        </p>
-        <p>
-            <strong>About SSJ</strong>
-            <br/>
-            一個技能點數亂點的化工人...
-        </p>
+    <div id="aboutme" class="d-flex flex-column justify-content-center align-items-center mb-3">
+        <img width="100%" style="max-inline-size: 300px" src="{% static "img\avatar.png" %}"/>
+        <h5><strong>About SSJ</strong></h5>
+        一個技能點數亂點的化工人...
     </div>
 
     <!-- Sidebar -->
-    <div class="container-sm breadcrumb">
+    <div id="infobar" class="card">
         <ul class="list-group">
             <!-- Sidebar/My Connections -->
             <li class="list-group-item justify-content-between align-items-center">
@@ -53,7 +48,7 @@
             <li class="list-group-item justify-content-between align-items-center">
                 <i class="fas fa-feather"></i>
                 Tags
-                <ul class="list-group ps-3" id="tags">
+                <ul id="tags" class="d-inline-flex flex-row list-group ps-3" >
                     {% for tag_name, tag_freq in tags_classified.items %}
 {#                        <li class="list-group-item d-flex justify-content-between align-items-end ps-0 pe-1 pb-1 tag-{{ tag_class }}">#}
                         <li class="list-group-item d-flex justify-content-between align-items-end ps-0 pe-1 pb-1">
