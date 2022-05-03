@@ -2,37 +2,14 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for article in articles %}
-        <article>
+        <article class="card pt-4 pb-4 ps-4 pe-4 mb-4">
             <h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
-            <ol class="breadcrumb">
-                <footer class="post-info">
-                    <span class="badge rounded-pill bg-secondary">
-                        <i class="far fa-calendar-alt"></i>
-                        <span class="label label-default">Date</span>
-                    </span>
-                    <span class="published">
-                        {% load tz %}
-                        <time datetime="{{ article.isotime }}">{{ article.time }}</time>
-                    </span>
-                    <span class="badge rounded-pill bg-secondary">
-                        <i class="fas fa-tags"></i>
-                        <span class="label label-default">Tags</span>
-                    </span>
-                    {% for tag in article.tags %}
-                        {% if forloop.last %}
-                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                        {% else %}
-                            <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                            /
-                        {% endif %}
-                    {% endfor %}
-                </footer>
-            </ol>
+            {% include 'article_breadcrumb.html' %}
+
             <div class="summary">
                 <p>{{ article.abstract }}</p>
-                <a class="btn btn-secondary" href="{% url 'article-url' article.slug %}">more...</a>
+                <a class="btn btn-secondary btn-sm" href="{% url 'article-url' article.slug %}">more...</a>
             </div>
         </article>
-        <hr/>
     {% endfor %}
 {% endblock %}
