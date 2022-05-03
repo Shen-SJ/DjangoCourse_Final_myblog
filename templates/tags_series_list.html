@@ -9,7 +9,7 @@
         <div class="card-header">
             <h2>{{ title }} Lists</h2>
         </div>
-        <div class="card-body">
+        <div id="tags-series-list-body" class="card-body">
             {% for item_name, item_number in items_table.items %}
                 {% if title == "Tags" %}
                     <h3 class="card-title"><a href="{% url "tag-url" item_name %}">{{ item_name }}</a></h3>

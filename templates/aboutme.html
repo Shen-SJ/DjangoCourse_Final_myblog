@@ -2,18 +2,15 @@
 {% extends 'base.html' %}
 {% block title %} - About Me{% endblock %}
 {% block content %}
-    <div class="card border-dark mb-3">
-        <style>
-            div.card.border-dark.mb-3 {box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px}
-        </style>
+    <div class="card mb-3">
         <div class="card-body">
             <h2 class="card-title">About</h2>
-            <p class="card-text">
+            <div class="card-text d-flex flex-column justify-content-center align-items-center">
                 {% load static %}
-                <p align="center"><img src="{% static "img\avatar.png" %}" width="300"></p>
-                <h1 align="Center"> 沈孝錚 </h1>
-                <h2 align="Center">Shen, Shiau-Jeng</h2>
-            </p>
+                <img src="{% static "img\avatar.png" %}" width="300">
+                <h1> 沈孝錚 </h1>
+                <h2>Shen, Shiau-Jeng</h2>
+            </div>
             <h4><i class="fas fa-graduation-cap"></i>　學歷</h4>
             <ul>
                 <li>國立臺灣大學化學工程研究所</li>

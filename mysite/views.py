@@ -171,7 +171,9 @@ def tag_list_page(request):
     title = "Tags"
     items_table = OrderedDict()
     for tag in models.Tags.objects.all().order_by('name'):
-        items_table[tag.name] = len(models.Articles.objects.filter(visible=True).filter(tags=tag))
+        article_num = len(models.Articles.objects.filter(visible=True).filter(tags=tag))
+        if article_num:
+            items_table[tag.name] = article_num
     return render(request, 'tags_series_list.html', locals())
 
 
@@ -185,7 +187,9 @@ def series_list_page(request):
     title = "Series"
     items_table = OrderedDict()
     for series in models.Series.objects.all().order_by('name'):
-        items_table[series.name] = len(models.Articles.objects.filter(visible=True).filter(series=series))
+        article_num = len(models.Articles.objects.filter(visible=True).filter(series=series))
+        if article_num:
+            items_table[series.name] = article_num
     return render(request, 'tags_series_list.html', locals())
 
 
