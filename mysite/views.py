@@ -227,7 +227,7 @@ def contact_page(request):
                 to=[' johnson840205@gmail.com '],    # 管理員(你自己)的email
                 reply_to=["Helpdesk <support@example.com>"]
             )
-            # email.send()
+            email.send()
             form = forms.ContactForm()
         else:
             message = '請檢查您輸入的資訊是否正確！'
