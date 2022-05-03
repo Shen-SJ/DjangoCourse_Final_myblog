@@ -31,8 +31,6 @@ article .summary > a:hover {
     font-weight: normal;
     text-decoration: inherit;
     margin-left:5px;
-    /*color:red;*/
-    /*content: '<i class="fas fa-crow"></i>';*/
 }
 
 #article-page > h2 {
