@@ -9,8 +9,17 @@ body {
     padding-top: 70px;
 }
 
+article > h3 {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
 article h2{
-    margin-top: 40px;
+    margin-top: 35px;
+}
+
+ol.breadcrumb.d-inline-flex + h2 {
+    margin-top: 5px;
 }
 
 /*add a cute bird before the h2 subtitle of article */
