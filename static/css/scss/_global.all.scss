@@ -1,0 +1,37 @@
+//_global.all.scss
+* {
+    font-family: 'Noto Sans TC';
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+    padding-top: 70px;
+}
+
+#tags {
+    flex-wrap: wrap;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+article,
+#infobar,
+.query-result,
+#my-info,
+#contact-me {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+}

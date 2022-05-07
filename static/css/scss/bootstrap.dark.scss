@@ -1,0 +1,43 @@
+@import "source_file/dark_theme/variables.dark";
+
+
+//Origin Bootstrap theme
+@import "source_file/functions";
+@import "source_file/variables.dark";
+@import "source_file/mixins";
+@import "source_file/utilities";
+@import "source_file/root";
+@import "source_file/reboot";
+@import "source_file/type";
+@import "source_file/images";
+@import "source_file/containers";
+@import "source_file/grid";
+@import "source_file/tables";
+@import "source_file/forms";
+@import "source_file/buttons";
+@import "source_file/transitions";
+@import "source_file/dropdown";
+@import "source_file/button-group";
+@import "source_file/nav";
+@import "source_file/navbar";
+@import "source_file/card";
+@import "source_file/accordion";
+@import "source_file/breadcrumb";
+@import "source_file/pagination";
+@import "source_file/badge";
+@import "source_file/alert";
+@import "source_file/progress";
+@import "source_file/list-group";
+@import "source_file/close";
+@import "source_file/toasts";
+@import "source_file/modal";
+@import "source_file/tooltip";
+@import "source_file/popover";
+@import "source_file/carousel";
+@import "source_file/spinners";
+@import "source_file/offcanvas";
+@import "source_file/placeholders";
+@import "source_file/helpers";
+@import "source_file/utilities/api";
+
+@import "source_file/dark_theme/bootswatch.dark";

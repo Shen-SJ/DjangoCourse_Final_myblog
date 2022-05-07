@@ -7,7 +7,7 @@ from collections import OrderedDict
 from django.forms.utils import ErrorList
 
 
-# Create your views here.
+# Utilities functions
 def recent_posts(number=5):
     """Show the 5 post of recent posts in the sidebar"""
     recent_articles = models.Articles.objects.filter(visible=True).order_by('-pub_date')[0:number]
@@ -27,11 +27,35 @@ def tags_cloud():
     return tags_freq
 
 
+def set_theme_cookie_firsttime(func):
+    """ a decorator for adding a theme cookie to https response when user visit my website first time and check the
+    theme cookie is valid.
+
+    :param func: the response of function need to be set a theme cookie.
+    :return: wrapped function.
+    """
+    def wrapper(*args, **kwargs):
+        request = args[0]
+        if request.COOKIES.get('_theme') and request.COOKIES.get('_theme') in ('dark', 'flat'):
+            pass
+        else:
+            request.COOKIES['_theme'] = 'dark'
+
+        response = func(*args, **kwargs)
+        return response
+    return wrapper
+
+
+# Create your views here.
+@set_theme_cookie_firsttime
 def index(request):
     """index page of web. show all of the articles."""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     # search action
     item_name = request.GET.get('search_item')
@@ -71,19 +95,29 @@ def index(request):
     return render(request, 'index.html', locals())
 
 
+@set_theme_cookie_firsttime
 def aboutme(request):
     """Show my information in the about page"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
+
     return render(request, 'aboutme.html', locals())
 
 
+@set_theme_cookie_firsttime
 def article_page(request, slug):
     """Show the article on page in each article"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
+
     try:
         article = models.Articles.objects.get(slug=slug)
         article = {
@@ -107,11 +141,15 @@ def article_page(request, slug):
     return render(request, 'article.html', locals())
 
 
+@set_theme_cookie_firsttime
 def tag_article_list_page(request, tag_name):
     """List the articles in specific tag"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     target_tag = None
     try:
@@ -133,12 +171,15 @@ def tag_article_list_page(request, tag_name):
     ]
     return render(request, 'query_page.html', locals())
 
-
+@set_theme_cookie_firsttime
 def series_article_list_page(request, series_name):
     """List the articles in specific Series"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     target_series = None
     try:
@@ -160,12 +201,15 @@ def series_article_list_page(request, series_name):
     ]
     return render(request, 'query_page.html', locals())
 
-
+@set_theme_cookie_firsttime
 def tag_list_page(request):
     """List the tags in this blog"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     # Count articles number for each tag
     title = "Tags"
@@ -177,11 +221,15 @@ def tag_list_page(request):
     return render(request, 'tags_series_list.html', locals())
 
 
+@set_theme_cookie_firsttime
 def series_list_page(request):
     """List the series in this blog"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     # Count articles number for each series
     title = "Series"
@@ -204,11 +252,15 @@ class DivErrorList(ErrorList):
         return ''.join(['<p class="errorlist text-danger">%s</p>' % e for e in self])
 
 
+@set_theme_cookie_firsttime
 def contact_page(request):
     """Show the Contact page to the reader and let them send the email to me by mailgun"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
 
     if request.method == 'POST':
         form = forms.ContactForm(request.POST,
@@ -243,9 +295,14 @@ def contact_page(request):
     return render(request, 'contact.html', locals())
 
 
+@set_theme_cookie_firsttime
 def page_not_found_page(request, exception):
     """Behavior of 404 page"""
     # show the recent posts and tags cloud in sidebar
     recent_articles = recent_posts()
     tags_classified = tags_cloud()
+
+    # get user-prefer-theme from cookies
+    theme = request.COOKIES['_theme']
+
     return render(request, '404.html', locals(), status=404)
