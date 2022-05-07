@@ -1,0 +1,24 @@
+//_global.all.scss
+* {
+    font-family: 'Noto Sans TC';
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+    padding-top: 70px;
+}
+
+#tags {
+    flex-wrap: wrap;
+}

@@ -24,7 +24,6 @@
                         <a class="btn btn-secondary" href="{% url 'article-url' article.slug %}">more...</a>
                     </div>
                 </article>
-                <hr/>
                 {% empty %}
                 <h2>找不到{{ item_name }}相關的文章...</h2>
             {% endfor %}
