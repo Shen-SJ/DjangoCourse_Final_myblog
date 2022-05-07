@@ -28,19 +28,20 @@ def tags_cloud():
 
 
 def set_theme_cookie_firsttime(func):
-    """ a decorator for adding a theme cookie to https response when user visit my website first time.
+    """ a decorator for adding a theme cookie to https response when user visit my website first time and check the
+    theme cookie is valid.
 
     :param func: the response of function need to be set a theme cookie.
     :return: wrapped function.
     """
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         request = args[0]
-        if request.COOKIES.get('_theme'):
+        if request.COOKIES.get('_theme') and request.COOKIES.get('_theme') in ('dark', 'flat'):
             pass
         else:
             request.COOKIES['_theme'] = 'dark'
 
-        response = func(*args)
+        response = func(*args, **kwargs)
         return response
     return wrapper
 

@@ -1,0 +1,7 @@
+body#dark-theme {
+  @import 'dark_code_monokai';
+}
+
+body#flat-theme {
+  @import 'flat_code_xcode';
+}

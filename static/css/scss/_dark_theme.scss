@@ -11592,7 +11592,6 @@ textarea.form-control-lg {
 }
 
 article {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
   > h3 {
     margin-top: 5px;
     margin-bottom: 25px;
@@ -11638,4 +11637,16 @@ a#back-to-top {
 
 a:hover#back-to-top {
     color: var(--bs-dark-gray-300);
+}
+
+.bg-custom {
+  --bs-dark-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-dark-rgb), var(--bs-dark-bg-opacity)) !important;
+}
+
+code.hljs {
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 1em;
 }

@@ -144,7 +144,7 @@ sup {
 
 a {
   color: #18bc9c;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover {
   color: #13967d;
@@ -4593,6 +4593,7 @@ textarea.form-control-lg {
   margin-bottom: 1rem;
   list-style: none;
   border-radius: 0.25rem;
+  background-color: var(--bs-flat-gray-300);
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -11102,4 +11103,61 @@ textarea.form-control-lg {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
 }
 
-/*# sourceMappingURL=bootstrap.flat.css.map */
+article {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+  > h3 {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    > a {
+      color: var(--bs-flat-body-color);
+    }
+    > a:hover {
+      color: var(--bs-flat-gray);
+    }
+  }
+
+  h2 {
+    margin-top: 15px;
+  }
+
+  h2:before {
+    content: '\f520';
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    margin-left:5px;
+  }
+ }
+
+aside,
+#tags-series-list-body,
+article .breadcrumb {
+  a {
+    color: var(--bs-flat-body-color);
+  }
+
+  a:hover {
+    color: var(--bs-flat-gray);
+  }
+
+  .list-group-item {
+    border: none;
+  }
+}
+
+a#back-to-top {
+    color: var(--bs-flat-body-color);
+}
+
+a:hover#back-to-top {
+    color: var(--bs-flat-gray);
+}
+
+code.hljs {
+  border: 1px solid var(--bs-flat-body-color);
+  border-radius: 4px;
+  overflow: auto;
+  padding: 1em;
+}
+
