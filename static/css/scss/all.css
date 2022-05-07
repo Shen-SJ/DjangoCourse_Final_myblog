@@ -159,6 +159,7 @@ body#dark-theme {
   background-color: var(--bs-dark-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: 0.15s;
   /* rtl:raw:
   [type="tel"],
   [type="url"],
@@ -4031,6 +4032,8 @@ body#dark-theme .card {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  transition: 0.15s;
+  transition-property: background-color;
 }
 body#dark-theme .card > hr {
   margin-right: 0;
@@ -9598,6 +9601,7 @@ body#flat-theme {
   background-color: var(--bs-flat-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: 0.15s;
   /* rtl:raw:
   [type="tel"],
   [type="url"],
@@ -13469,6 +13473,8 @@ body#flat-theme .card {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  transition: 0.15s;
+  transition-property: background-color;
 }
 body#flat-theme .card > hr {
   margin-right: 0;
