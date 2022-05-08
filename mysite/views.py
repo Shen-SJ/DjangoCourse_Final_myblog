@@ -105,7 +105,7 @@ def aboutme(request):
     # get user-prefer-theme from cookies
     theme = request.COOKIES['_theme']
 
-    return render(request, 'aboutme.html', locals())
+    return render(request, 'aboutme_page.html', locals())
 
 
 @set_theme_cookie_firsttime
