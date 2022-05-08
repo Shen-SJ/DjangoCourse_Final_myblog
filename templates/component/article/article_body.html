@@ -1,0 +1,17 @@
+<!-- article_body.html -->
+{{ article.body|safe }}
+{% if article.series %}
+    <h2>系列文章列表</h2>
+    <div class="list-group">
+        {% for post in articles_series %}
+            {% if post.title == article_now.title %}
+                <a href="{% url "article-url" post.slug %}" class="list-group-item active">{{ post.title }}</a>
+            {% else %}
+                <a href="{% url "article-url" post.slug %}" class="list-group-item">{{ post.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+<hr>
+{% include 'component/article/article_comments.html' %}
+<!-- End article_body.html -->

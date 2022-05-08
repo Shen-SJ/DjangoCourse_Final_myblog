@@ -7,20 +7,8 @@
             <h2>{{ title }}: {{ item_name }}</h2>
         </div>
         <div id="query-results" class="card-body">
-        <style>
-            .card-body > hr {
-                background-color: transparent;
-            }
-        </style>
             {% for article in articles %}
-                <article class="card pt-4 pb-4 ps-4 pe-4 mb-4">
-                    <h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
-                    {% include 'article_breadcrumb.html' %}
-                    <div class="summary">
-                        <p>{{ article.abstract }}</p>
-                        <a class="btn btn-secondary" href="{% url 'article-url' article.slug %}">more...</a>
-                    </div>
-                </article>
+                {% include 'component/article/article_brief.html' %}
                 {% empty %}
                 <h2>找不到{{ item_name }}相關的文章...</h2>
             {% endfor %}

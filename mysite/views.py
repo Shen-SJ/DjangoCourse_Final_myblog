@@ -105,7 +105,7 @@ def aboutme(request):
     # get user-prefer-theme from cookies
     theme = request.COOKIES['_theme']
 
-    return render(request, 'aboutme.html', locals())
+    return render(request, 'aboutme_page.html', locals())
 
 
 @set_theme_cookie_firsttime
@@ -138,7 +138,7 @@ def article_page(request, slug):
     except:
         msg = '很抱歉，您所選取的文章不存在，請回到首頁'
         return render(request, '404.html', locals())
-    return render(request, 'article.html', locals())
+    return render(request, 'article_page.html', locals())
 
 
 @set_theme_cookie_firsttime
@@ -218,7 +218,7 @@ def tag_list_page(request):
         article_num = len(models.Articles.objects.filter(visible=True).filter(tags=tag))
         if article_num:
             items_table[tag.name] = article_num
-    return render(request, 'tags_series_list.html', locals())
+    return render(request, 'tags_series_list_page.html', locals())
 
 
 @set_theme_cookie_firsttime
@@ -238,7 +238,7 @@ def series_list_page(request):
         article_num = len(models.Articles.objects.filter(visible=True).filter(series=series))
         if article_num:
             items_table[series.name] = article_num
-    return render(request, 'tags_series_list.html', locals())
+    return render(request, 'tags_series_list_page.html', locals())
 
 
 class DivErrorList(ErrorList):
@@ -292,7 +292,7 @@ def contact_page(request):
     else:
         form = forms.ContactForm()
 
-    return render(request, 'contact.html', locals())
+    return render(request, 'contact_page.html', locals())
 
 
 @set_theme_cookie_firsttime

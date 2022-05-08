@@ -1,4 +1,5 @@
-<!-- article_breadcrumb.html -->
+<!-- article_header.html -->
+<h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
 <ol class="breadcrumb d-inline-flex flex-row">
     <span class="badge rounded-pill bg-dark me-2">
         <i class="far fa-calendar-alt"></i>
@@ -16,4 +17,4 @@
         <li class="breadcrumb-item"><a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a></li>
     {% endfor %}
 </ol>
-<!-- end of article_breadcrumb.html -->
+<!-- end of article_header.html -->
