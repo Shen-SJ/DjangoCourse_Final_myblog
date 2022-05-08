@@ -28,13 +28,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = key_data["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['*']
-
-# DEBUG = True
+# DEBUG = False
 #
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
+
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -160,7 +160,7 @@ CKEDITOR_CONFIGS = {
             {'name': 'insert',
              'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar']},
             '/',    # put this to force next toolbar on new line
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize', 'CodeSnippet', 'Mathjax']},
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize', 'CodeSnippet', 'Code', 'Mathjax']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},
@@ -170,7 +170,7 @@ CKEDITOR_CONFIGS = {
                 'Maximize',
             ]},
         ],
-        'extraPlugins': 'codesnippet, mathjax',
+        'extraPlugins': 'codesnippet, mathjax, codeTag',
         'mathJaxClass': 'math-tex',
         'mathJaxLib': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_SVG',
         'codeSnippet_theme': 'monokai',
