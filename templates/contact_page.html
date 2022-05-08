@@ -1,0 +1,9 @@
+<!-- search.html -->
+{% extends 'base.html' %}
+{% block title %} - Contact{% endblock %}
+{% block content %}
+    {% include 'component/contact/alert.html' %}
+    <form name="my form" action="." method="post" novalidate>
+    {% include 'component/contact/form.html' %}
+    </form>
+{% endblock %}

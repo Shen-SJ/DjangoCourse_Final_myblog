@@ -1,0 +1,37 @@
+<!-- contact/form/body.html -->
+{% load widget_tweaks %}
+<div class="card-body">
+    <div class="panel-body">
+        {% include 'component/contact/form/body/safety.html' %}
+
+        <div class="form-group">
+            {% include 'component/contact/form/body/error_style.html' %}
+
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label mt-4">{{ field.label }}</label>
+
+                    {% if form.is_bound %}
+                        {% if field.errors %}
+                            {% render_field field class="form-control is-invalid" %}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {% render_field field class="form-control is-valid" %}
+                        {% endif %}
+                    {% else %}
+                        {% render_field field class="form-control" %}
+                    {% endif %}
+
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- End contact/form/body.html -->

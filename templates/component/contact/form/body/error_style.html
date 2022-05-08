@@ -1,0 +1,9 @@
+<!-- contact/form/body/error_style.html -->
+{% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
+<!-- End contact/form/body/error_style.html -->

@@ -292,7 +292,7 @@ def contact_page(request):
     else:
         form = forms.ContactForm()
 
-    return render(request, 'contact.html', locals())
+    return render(request, 'contact_page.html', locals())
 
 
 @set_theme_cookie_firsttime
