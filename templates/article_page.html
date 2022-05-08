@@ -1,0 +1,11 @@
+<!-- article_page.html -->
+{% extends 'base.html' %}
+{% block title %} - {{ article.title }}{% endblock %}
+{% block content %}
+    {% load static %}
+    <!-- Enable ckeditor -->
+    <link href="{% static "css/code_style.css" %}" rel="stylesheet">
+    <script src="{% static "ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    {% include 'component/article/article_itself.html' %}
+{% endblock %}

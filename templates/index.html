@@ -2,14 +2,6 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for article in articles %}
-        <article class="card pt-4 pb-4 ps-4 pe-4 mb-4">
-            <h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
-            {% include 'article_breadcrumb.html' %}
-
-            <div class="summary">
-                <p>{{ article.abstract }}</p>
-                <a class="btn btn-secondary btn-sm" href="{% url 'article-url' article.slug %}">more...</a>
-            </div>
-        </article>
+        {% include 'component/article/article_brief.html' %}
     {% endfor %}
 {% endblock %}

@@ -138,7 +138,7 @@ def article_page(request, slug):
     except:
         msg = '很抱歉，您所選取的文章不存在，請回到首頁'
         return render(request, '404.html', locals())
-    return render(request, 'article.html', locals())
+    return render(request, 'article_page.html', locals())
 
 
 @set_theme_cookie_firsttime
