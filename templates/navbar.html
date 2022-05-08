@@ -1,44 +1,9 @@
 <!-- navbar.html -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
-        <div>
-            <a class="navbar-brand" href="/">SSJ's Blog</a>
-            <i class="fas fa-cloud-sun navbar-brand" onclick="toggle_dark_light()"></i>
-        </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">Home
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Blogging</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/">Articel</a>
-              <a class="dropdown-item" href="/tags">Tags</a>
-              <a class="dropdown-item" href="/series">Series</a>
-{#              <div class="dropdown-divider"></div>#}
-{#              <a class="dropdown-item" href="#">Separated link</a>#}
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-          </li>
-
-        </ul>
-        <form class="d-flex" action="/" role="search" method="get">
-          <input class="form-control my-2 me-2" id="search-input" name="search_item" type="text" placeholder="Enter Keyword...">
-          <button class="btn btn-secondary my-2" type="submit">Search</button>
-        </form>
-      </div>
+        {% include 'component/navbar/brand.html' %}
+        {% include 'component/navbar/toggler.html' %}
+        {% include 'component/navbar/collapse_group.html' %}
     </div>
 </nav>
 <!-- navbar.html end -->
