@@ -1,0 +1,8 @@
+<!-- search.html -->
+{% extends 'base.html' %}
+{% block title %} - {{ title }} Lists{% endblock %}
+{% block content %}
+    <div class="card border-dark mb-3 query-result">
+        {% include 'component/tags_series_list/content.html' %}
+    </div>
+{% endblock %}

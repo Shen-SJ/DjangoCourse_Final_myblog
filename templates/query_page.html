@@ -2,43 +2,16 @@
 {% extends 'base.html' %}
 {% block title %} - {{ title }}: {{ item_name }}{% endblock %}
 {% block content %}
-    <div class="panel panel-default">
-        <style>
-            div.panel-default {box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px}
-        </style>
-        <div class="panel-heading">
-            <h1 class="entry-title">{{ title }}: {{ item_name }}</h1>
+    <div class="card mb-3 query-result">
+        <div class="card-header">
+            <h2>{{ title }}: {{ item_name }}</h2>
         </div>
-        <div class="panel-body">
-        {% for article in articles %}
-            <article>
-                <h2><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h2>
-                <div class="well well-sm">
-                    <footer class="post-info">
-                        <span class="label label-default">Date</span>
-                        <span class="published">
-                            <i class="fa fa-calendar"></i>
-                            {% load tz %}
-                            <time datetime="{{ article.isotime }}">{{ article.time }}</time>
-                        </span>
-                        <span class="label label-default">Tags</span>
-                        {% for tag in article.tags %}
-                            {% if forloop.last %}
-                                <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                            {% else %}
-                                <a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a>
-                                /
-                            {% endif %}
-                        {% endfor %}
-                    </footer>
-                </div>
-                <div class="summary">
-                    <p>{{ article.abstract }}</p>
-                    <a class="btn btn-default btn-xs" href="{% url 'article-url' article.slug %}">more ...</a>
-                </div>
-            </article>
-            <hr/>
-        {% endfor %}
+        <div id="query-results" class="card-body">
+            {% for article in articles %}
+                {% include 'component/article/article_brief.html' %}
+                {% empty %}
+                <h2>找不到{{ item_name }}相關的文章...</h2>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

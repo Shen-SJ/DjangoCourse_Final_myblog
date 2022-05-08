@@ -6,3 +6,6 @@ __pycache__
 
 # sensitive data
 key_data.json
+
+# virtual enviroment folder
+venv

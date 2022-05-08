@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from mysite import views
 
 urlpatterns = [
@@ -23,4 +23,11 @@ urlpatterns = [
     path('article/<slug:slug>', views.article_page, name='article-url'),
     path('about/', views.aboutme),
     path('tags/<str:tag_name>', views.tag_article_list_page, name='tag-url'),
+    path('tags/', views.tag_list_page),
+    path('series/<str:series_name>', views.series_article_list_page, name='series-url'),
+    path('series/', views.series_list_page),
+    path('contact/', views.contact_page),
+    path('captcha/', include('captcha.urls'))
 ]
+
+handler404 = "mysite.views.page_not_found_page"

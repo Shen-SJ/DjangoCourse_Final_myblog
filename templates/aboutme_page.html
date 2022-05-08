@@ -1,0 +1,14 @@
+<!-- aboutme_page.html -->
+{% extends 'base.html' %}
+{% block title %} - About Me{% endblock %}
+{% block content %}
+    <div class="card mb-3">
+        <div id="my-info" class="card-body">
+            <h2 class="card-title">About</h2>
+            {% include 'component/aboutme/avatar_brief.html' %}
+            {% include 'component/aboutme/graduate.html' %}
+            {% include 'component/aboutme/hobby.html' %}
+            {% include 'component/aboutme/autobiography.html' %}
+        </div>
+    </div>
+{% endblock %}

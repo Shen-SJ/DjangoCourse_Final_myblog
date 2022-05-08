@@ -1,0 +1,17 @@
+<!-- tag_cloud.html -->
+<li class="list-group-item justify-content-between align-items-center">
+    <i class="fas fa-feather"></i>
+    Tags
+    <ul id="tags" class="d-inline-flex flex-row list-group ps-3">
+        {% for tag_name, tag_freq in tags_classified.items %}
+            {#                        <li class="list-group-item d-flex justify-content-between align-items-end ps-0 pe-1 pb-1 tag-{{ tag_class }}">#}
+            <li class="list-group-item d-flex justify-content-between align-items-end ps-0 pe-1 pb-1">
+                <a class="badge bg-secondary" href="{% url 'tag-url' tag_name %}">
+                    {{ tag_name }}
+                    <span class="badge rounded-pill bg-dark">{{ tag_freq }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</li>
+<!-- End tag_cloud.html -->

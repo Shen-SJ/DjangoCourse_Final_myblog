@@ -1,0 +1,20 @@
+<!-- article_header.html -->
+<h3><a href="{% url 'article-url' article.slug %}">{{ article.title }}</a></h3>
+<ol class="breadcrumb d-inline-flex flex-row">
+    <span class="badge rounded-pill bg-dark me-2">
+        <i class="far fa-calendar-alt"></i>
+        <span class="label label-default">Date</span>
+    </span>
+    <span class="published me-2">
+        {% load tz %}
+        <time datetime="{{ article.isotime }}">{{ article.time }}</time>
+    </span>
+    <span class="badge rounded-pill bg-dark me-2">
+        <i class="fas fa-tags"></i>
+        <span class="label label-default">Tags</span>
+    </span>
+    {% for tag in article.tags %}
+        <li class="breadcrumb-item"><a href="{% url 'tag-url' tag.name %}">{{ tag.name }}</a></li>
+    {% endfor %}
+</ol>
+<!-- end of article_header.html -->

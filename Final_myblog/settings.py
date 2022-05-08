@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import json
+
+# load the mailgun data from file
+with open('key_data.json') as f:
+    key_data = json.load(f)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,17 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&&-b+1rz@qylqitcj7if59yr8-)cd$ym%*671lu-5-@=85-x%g'
+SECRET_KEY = key_data["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-# DEBUG = False
+# DEBUG = True
 #
-# ALLOWED_HOSTS = ['127.0.0.1']
-
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -43,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mysite',
     'ckeditor',
+    'captcha',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -124,7 +130,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
@@ -155,7 +160,7 @@ CKEDITOR_CONFIGS = {
             {'name': 'insert',
              'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar']},
             '/',    # put this to force next toolbar on new line
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize', 'CodeSnippet']},
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize', 'CodeSnippet', 'Code', 'Mathjax']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},
@@ -165,7 +170,19 @@ CKEDITOR_CONFIGS = {
                 'Maximize',
             ]},
         ],
-        'extraPlugins': 'codesnippet',
+        'extraPlugins': 'codesnippet, mathjax, codeTag',
+        'mathJaxClass': 'math-tex',
+        'mathJaxLib': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_SVG',
         'codeSnippet_theme': 'monokai',
+        'width': '100%',
     },
 }
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": f"{key_data['MAILGUN_API_KEY']}",
+    "MAILGUN_SENDER_DOMAIN": f"{key_data['MAILGUN_SENDER_DOMAIN']}",
+}
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = "you@example.com"
+SERVER_EMAIL = "your-server@example.com"

@@ -1,0 +1,12 @@
+<!-- recent_posts.html -->
+<li class="list-group-item justify-content-between align-items-center">
+    <i class="fas fa-feather"></i>
+    Recent Posts
+    <ul class="list-group" id="recentposts">
+        {% for post in recent_articles %}
+            <li class="list-group-item justify-content-between align-items-center"><a
+                    href="{% url 'article-url' post.slug %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+<!-- End recent_posts.html -->
