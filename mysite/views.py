@@ -218,7 +218,7 @@ def tag_list_page(request):
         article_num = len(models.Articles.objects.filter(visible=True).filter(tags=tag))
         if article_num:
             items_table[tag.name] = article_num
-    return render(request, 'tags_series_list.html', locals())
+    return render(request, 'tags_series_list_page.html', locals())
 
 
 @set_theme_cookie_firsttime
@@ -238,7 +238,7 @@ def series_list_page(request):
         article_num = len(models.Articles.objects.filter(visible=True).filter(series=series))
         if article_num:
             items_table[series.name] = article_num
-    return render(request, 'tags_series_list.html', locals())
+    return render(request, 'tags_series_list_page.html', locals())
 
 
 class DivErrorList(ErrorList):
