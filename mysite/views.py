@@ -306,3 +306,18 @@ def page_not_found_page(request, exception):
     theme = request.COOKIES['_theme']
 
     return render(request, '404.html', locals(), status=404)
+
+
+def wedding_index(request):
+    """index page of web. show all of the articles."""
+    wedding_photos = models.WeddingPhotos.objects.order_by('order')
+    wedding_photos = [
+            {'order': wedding_photo.order,
+            'large_url': wedding_photo.large_url,
+            'medium_url': wedding_photo.medium_url,
+            'small_url': wedding_photo.small_url,
+            'comment': wedding_photo.comment,
+            } for wedding_photo in wedding_photos
+        ]
+
+    return render(request, 'wedding/wedding_index.html', locals())
