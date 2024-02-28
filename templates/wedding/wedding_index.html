@@ -31,18 +31,20 @@
     
     <div class="slideshow">
         {% for wedding_photo in wedding_photos %}
-        <img src="{{ wedding_photo.large_url }}" alt="Image 1">
+        <img src="{{ wedding_photo.large_url }}" alt="wedding photo">
         {% endfor %}
     </div>
     
     <div class="gallery">
         {% for wedding_photo in wedding_photos %}
-        <img src="{{ wedding_photo.large_url }}" alt="Image 1">
+        <div class="gallery__container">
+            <img src="{{ wedding_photo.medium_url }}" alt="wedding photo">
+        </div>
         {% endfor %}
     </div>
 
     <div class="footer">
-        &copy; 2024 SSJ &middot; Powered by
+        &copy; 2024 SSJ &middot; Powered by&nbsp;
         <a href="https://www.djangoproject.com/" target="_blank">Django</a>,
         <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>
     </div>

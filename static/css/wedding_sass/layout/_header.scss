@@ -1,4 +1,14 @@
 .header {
-    height: 20vh;
+    background-color: $color-primary;
+    color: $color-light;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    
+    height: $header-height;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }

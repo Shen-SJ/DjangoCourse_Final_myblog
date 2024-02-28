@@ -17,10 +17,11 @@ html {
 
 body {
   box-sizing: border-box;
+  background-color: #f2edea;
 }
 
 ::selection {
-  background-color: #785d4e;
+  background-color: #8f786c;
   color: #fff;
 }
 
@@ -32,32 +33,54 @@ body {
 
 .heading-primary {
   font-size: 4.5rem;
+  text-align: center;
 }
 
 .header {
-  height: 20vh;
+  background-color: #8f786c;
+  color: #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  height: 15rem;
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slideshow {
   position: relative;
-  height: 70vh;
-  overflow: hidden;
+  height: 80vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 15rem;
 }
 .slideshow img {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 .slideshow img.active {
   opacity: 1;
   transition: opacity 1s ease-in-out;
+}
+
+.gallery {
+  width: 100%;
+}
+.gallery img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=wedding.css.map */
