@@ -9,3 +9,6 @@ key_data.json
 
 # virtual enviroment folder
 venv
+
+# MacOS system file
+.DS_Store
