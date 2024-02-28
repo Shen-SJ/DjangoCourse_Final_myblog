@@ -1,0 +1,41 @@
+*, 
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%;   // 1rem = 10px; 10px/16px = 62.5%
+    /* 使用者預設 font-size 就是 16px，如果我們直接打 100% 就表示我們的 font-size 是 16px了，
+    但我們原本是以 10px 為基礎設計的網站，所以為了在使用者預設 16px 的 font-size 下可以顯示我們 
+    10px 的 font-size，就是打 62.5% 就對了，16*0.625 = 10 */
+
+    // @include respond(tab-land) {    // width < 900?
+    //     font-size: 56.25%;     // 1rem = 9px; 9px/16px = 56.25%
+    // }
+    
+    // @include respond(tab-port) {    // width < 1200?
+    //     font-size: 50%;     // 1rem = 8px; 8px/16px = 50%
+    // }
+
+    // @include respond(big-desktop) {
+    //     font-size: 75%;         // 1rem = 12px; 12px/16px = 75%
+    // }
+}
+
+body {
+    box-sizing: border-box;
+    background-color: $color-bg;
+    
+    // @include respond(tab-port) {
+    //     padding: 0;
+    // }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
