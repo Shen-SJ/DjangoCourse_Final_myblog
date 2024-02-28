@@ -27,7 +27,8 @@ urlpatterns = [
     path('series/<str:series_name>', views.series_article_list_page, name='series-url'),
     path('series/', views.series_list_page),
     path('contact/', views.contact_page),
-    path('captcha/', include('captcha.urls'))
+    path('captcha/', include('captcha.urls')),
+    path('wedding/', views.wedding_index)
 ]
 
 handler404 = "mysite.views.page_not_found_page"
