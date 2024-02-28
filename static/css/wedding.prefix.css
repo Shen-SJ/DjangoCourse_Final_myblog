@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  /* 使用者預設 font-size 就是 16px，如果我們直接打 100% 就表示我們的 font-size 是 16px了，
+  但我們原本是以 10px 為基礎設計的網站，所以為了在使用者預設 16px 的 font-size 下可以顯示我們 
+  10px 的 font-size，就是打 62.5% 就對了，16*0.625 = 10 */
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+}
+
+::-moz-selection {
+  background-color: #785d4e;
+  color: #fff;
+}
+
+::selection {
+  background-color: #785d4e;
+  color: #fff;
+}
+
+body {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.heading-primary {
+  font-size: 8rem;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slideshow img.active {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlZGRpbmcuY29tcC5jc3MiLCJ3ZWRkaW5nX3Nhc3MvYmFzZS9fdHlwb2dyYXBoeS5zY3NzIiwid2VkZGluZ19zYXNzL2Jhc2UvX2Jhc2Uuc2NzcyIsIndlZGRpbmdfc2Fzcy9hYnN0cmFjdC9fdmFyaWFibGVzLnNjc3MiLCJ3ZWRkaW5nX3Nhc3MvbGF5b3V0L19zbGlkZXNob3cuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBUixxRkFBQTtBQ0FSOzs7RUFHSSxTQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FGR0o7O0FFQUE7RUFFSSxnQkFBQTtFQUNBOztnREFBQTtBRklKOztBRWFBO0VBQ0ksc0JBQUE7RUFDQSxhQUFBO0FGVko7O0FFaUJBO0VBQ0kseUJDckNZO0VEc0NaLFdDcENVO0FIc0JkOztBRVlBO0VBQ0kseUJDckNZO0VEc0NaLFdDcENVO0FIc0JkOztBQ3hCQTtFQUNJLHdDQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtBRDJCSjs7QUN4QkE7RUFDSSxlQUFBO0FEMkJKOztBSW5DQTtFQUNJLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSxnQkFBQTtBSnNDSjtBSXBDSTtFQUNJLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFDQSxrQ0FBQTtBSnNDUjtBSXBDUTtFQUNJLFVBQUE7RUFDQSxrQ0FBQTtBSnNDWiIsImZpbGUiOiJ3ZWRkaW5nLnByZWZpeC5jc3MifQ== */
