@@ -12,3 +12,8 @@ venv
 
 # MacOS system file
 .DS_Store
+
+# node relative files and folder
+node_modules/
+package-lock.json
+package.json
