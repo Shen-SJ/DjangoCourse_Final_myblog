@@ -1,4 +1,28 @@
 .footer {
+    font-size: 1rem;
+    color: $color-bg;
+    background-color: $color-secondary;
     display: flex;
+    // flex-direction: column;
+    // align-items: center;
     justify-content: center;
+
+    &__link {
+        &:link, 
+        &:visited {
+            color: $color-bg;
+            background-color: $color-secondary;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all .2s;
+        }
+
+        &:hover, 
+        &:active {
+            color: $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black, .4);
+            transform: rotate(5deg) scale(1.3);
+        }
+    }
 }

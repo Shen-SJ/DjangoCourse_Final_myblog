@@ -1,6 +1,6 @@
 .slideshow {
     position: relative;
-    height: 80vh;
+    height: calc(100vh - $header-height);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,9 +19,3 @@
         }
     }
 }
-
-
-// .slideshow img.active {
-//     opacity: 1;
-//     transition: opacity 1s ease-in-out;
-// }
