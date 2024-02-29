@@ -34,19 +34,23 @@
         <img src="{{ wedding_photo.large_url }}" alt="wedding photo">
         {% endfor %}
     </div>
+
+    <div class="divider">
+        <img src="{% static "img\divider.png" %}" alt="divider">
+    </div>
     
     <div class="gallery">
         {% for wedding_photo in wedding_photos %}
-        <div class="gallery__container">
-            <img src="{{ wedding_photo.medium_url }}" alt="wedding photo">
-        </div>
+        <img src="{{ wedding_photo.large_url }}" alt="wedding photo">
         {% endfor %}
     </div>
 
     <div class="footer">
-        &copy; 2024 SSJ &middot; Powered by&nbsp;
-        <a href="https://www.djangoproject.com/" target="_blank">Django</a>,
-        <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>
+        <div class="footer_content">
+            &copy; 2024 SSJ &middot; Powered by&nbsp;
+            <a href="https://www.djangoproject.com/" class="footer__link">Django</a>,&nbsp;
+            <a href="https://www.freepnglogos.com/images/divider-36074.html" class="footer__link" >DividerProf.Dev.</a>
+        </div>
     </div>
     <script src="{% static "js\wedding.js" %}"></script>
 </body>
