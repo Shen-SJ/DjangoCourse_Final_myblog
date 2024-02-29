@@ -51,6 +51,7 @@ body {
 }
 
 .slideshow {
+  background-color: #c0bcbd;
   position: relative;
   height: calc(100vh - 10rem);
   display: flex;
