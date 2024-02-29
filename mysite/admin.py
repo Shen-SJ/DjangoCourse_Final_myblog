@@ -9,7 +9,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class WeddingPhotosAdmin(admin.ModelAdmin):
-    list_display = ('image_tag', 'order', 'large_url', 'medium_url', 'small_url', 'comment', 'establish_date')
+    list_display = ('image_tag', 'order', 'origin_url', 'large_url', 'medium_url', 'small_url', 'comment', 'establish_date')
     readonly_fields = ('image_tag',)
 
 
