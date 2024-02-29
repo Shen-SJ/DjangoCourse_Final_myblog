@@ -40,7 +40,8 @@ class Articles(models.Model):
     
 
 class WeddingPhotos(models.Model):
-    order = models.IntegerField()
+    order = models.IntegerField(unique=True)
+    origin_url = models.CharField(max_length=200)
     large_url = models.CharField(max_length=200)
     medium_url = models.CharField(max_length=200)
     small_url = models.CharField(max_length=200)
